@@ -16,6 +16,7 @@ app.post('/deposit',(req,res)=>{
     fs.writeFile(__dirname+"/data.json",JSON.stringify({balance:req.body.deposit}))
     .then(result=>{
       console.log(result);
+      res.redirect("back")
       res.end()
     })
   })
@@ -31,7 +32,8 @@ app.post('/deposit',(req,res)=>{
     })
   })
   app.get('/balance',(req,res)=>{
-  res.json(data.balance)
+  res.json(data)
+  res.redirect('/balance')
   })
 app.listen(3000,()=>{
     console.log("server stated");
